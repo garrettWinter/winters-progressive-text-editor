@@ -12,6 +12,8 @@ const initdb = async () =>
     },
   });
 
+
+// This is a function to update the local database with what has been saved into local storage.
 export const putDb = async (content) => {
   console.log('PUT to the database');
   const putNotesDb = await openDB('jate', 1);
@@ -22,15 +24,17 @@ export const putDb = async (content) => {
   console.log('🚀 - data saved to the database', result);
 };
 
+// This reteives the notes saved in the local database
 export const getDb = async () => {
-  console.log('GET from the database test');
+  console.log('GET from the database');
   const getNotesDb = await openDB('jate', 1);
   const tx = getNotesDb.transaction('jate', 'readonly');
   const store = tx.objectStore('jate');
   const request = store.get(1);
   const result = await request;
+  //This is logic that if no data is present it will return out of the function, else it will return what is saved in the DB.
   if (!result){
-    return
+    return;
   }
   else {
   return result.value;
