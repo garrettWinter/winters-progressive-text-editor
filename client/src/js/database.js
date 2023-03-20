@@ -23,13 +23,18 @@ export const putDb = async (content) => {
 };
 
 export const getDb = async () => {
-  console.log('GET from the database');
+  console.log('GET from the database test');
   const getNotesDb = await openDB('jate', 1);
   const tx = getNotesDb.transaction('jate', 'readonly');
   const store = tx.objectStore('jate');
   const request = store.get(1);
   const result = await request;
+  if (!result){
+    return
+  }
+  else {
   return result.value;
+  }
 }
 
 initdb();
