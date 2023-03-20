@@ -12,7 +12,6 @@ const initdb = async () =>
     },
   });
 
-// TODO: Add logic to a method that accepts some content and adds it to the database
 export const putDb = async (content) => {
   console.log('PUT to the database');
   const putNotesDb = await openDB('jate', 1);
@@ -23,9 +22,8 @@ export const putDb = async (content) => {
   console.log('🚀 - data saved to the database', result);
 };
 
-// TODO: Add logic for a method that gets all the content from the database
 export const getDb = async () => {
-  console.log('GET all from the database');
+  console.log('GET from the database');
   const getNotesDb = await openDB('jate', 1);
   const tx = getNotesDb.transaction('jate', 'readonly');
   const store = tx.objectStore('jate');
