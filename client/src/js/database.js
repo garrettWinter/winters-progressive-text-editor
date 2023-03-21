@@ -26,7 +26,7 @@ export const putDb = async (content) => {
 
 // This reteives the notes saved in the local database
 export const getDb = async () => {
-  initdb();
+  await initdb();
   console.log('GET from the database');
   const getNotesDb = await openDB('jate', 1);
   const tx = getNotesDb.transaction('jate', 'readonly');
