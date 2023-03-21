@@ -35,7 +35,7 @@ export const getDb = async () => {
   const result = await request;
   //This is logic that if no data is present it will return out of the function, else it will return what is saved in the DB.
   if (!result){
-    return;
+    return null;
   }
   else {
   return result.value;
