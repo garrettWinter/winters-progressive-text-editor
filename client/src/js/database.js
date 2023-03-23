@@ -26,7 +26,6 @@ export const putDb = async (content) => {
 
 // This reteives the notes saved in the local database
 export const getDb = async () => {
-  await initdb();
   console.log('GET from the database');
   const getNotesDb = await openDB('jate', 1);
   const tx = getNotesDb.transaction('jate', 'readonly');
@@ -34,12 +33,15 @@ export const getDb = async () => {
   const request = store.get(1);
   const result = await request;
   //This is logic that if no data is present it will return out of the function, else it will return what is saved in the DB.
-  if (!result){
-    return null;
+  if (result){
+    console.log('data retreived successfully')
   }
   else {
-  return result.value;
+  console.log('NO DATA FOUND ')
   }
+  return result?.value
+
+
 }
 
 initdb();
